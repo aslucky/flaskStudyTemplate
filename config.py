@@ -17,6 +17,7 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+    TEMPLATES_AUTO_RELOAD = True
 
     @staticmethod
     def init_app(app):

@@ -1,0 +1,54 @@
+/* footer bottom part */
+html {
+    position: relative;
+    min-height: 100%;
+    font-size: 62.5%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 8em;
+
+}
+
+.footer {
+    padding: 1.3em;
+    margin: 0 0 0 0;
+    background: #333333;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 4em;
+}
+
+/* footer bottom part finished */
+
+/* validator part */
+
+/* Color of invalid field */
+.has-error ,
+.has-error .control-label,
+.has-error .help-block,
+.has-error .form-control,
+.has-error .form-control-feedback {
+    /*color: #a94442;*/
+    color: #ff0039;
+}
+
+/* Color of valid field */
+.has-error ,
+.has-success .control-label,
+.has-success .help-block,
+.has-error .form-control,
+.has-success .form-control-feedback {
+    color: #3c763d;
+}
+
+.has-error .error{
+    font-size: 1.3em;
+}
+
+/* validator part finished */

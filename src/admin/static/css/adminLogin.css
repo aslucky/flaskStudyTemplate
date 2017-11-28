@@ -1,0 +1,79 @@
+/*html, body {*/
+/*min-height: 100%;*/
+/*}*/
+
+body {
+    /*height: 100vh;*/
+    padding: 0;
+    font-size: 1em;
+    background: url('../images/bg.jpg') no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.7);
+    border: 0px solid #fff;
+    border-radius: 10px;
+    padding: 3em;
+    margin: 20vh 0 0 0;
+    -webkit-box-shadow: 1px 9px 34px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 9px 34px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 9px 34px 0px rgba(0, 0, 0, 0.75);
+
+}
+
+.form-container h2 {
+    margin: 0 0 1em;
+    padding: 0;
+    color: #fff;
+    font-size: 2em;
+    text-align: center;
+}
+
+.form-container label {
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.form-container input {
+    font-size: 1.5em;
+    color: #000000;
+}
+
+.form-container .btn {
+    font-size: 1.5em;
+}
+
+.form-container .form-check .form-check-label .chkText {
+    font-size: 100%;
+    padding-left: .5em;
+}
+
+.footer {
+    font-size: 1.5em;
+}
+
+@media screen and (max-width: 321px) {
+    .form-container h2 {
+        font-size: 1.5em;
+    }
+
+    .form-container label {
+        font-size: 1em;
+    }
+
+    .form-container {
+        padding: 10px;
+    }
+
+    .form-container h2 {
+        margin: 5px 0 5px;
+    }
+
+    .footer {
+        font-size: 1em;
+    }
+
+}
