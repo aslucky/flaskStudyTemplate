@@ -34,10 +34,8 @@
 {% block script %}
 <!-- faster load times -->
 <script src="{{ url_for('static', filename='js/ext/jquery-3.2.1.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-        crossorigin="anonymous"></script>
-<script src="{{ url_for('static', filename='js/ext/bootstrap.min.js') }}"></script>
+<!--<script src="{{ url_for('static', filename='js/ext/popper.min.js') }}"></script>-->
+<script src="{{ url_for('static', filename='js/ext/bootstrap.bundle.min.js') }}"></script>
 {% endblock %}
 </body>
 </html>

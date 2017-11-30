@@ -1,0 +1,9 @@
+/* 表格高度 */
+.panel-body .datagrid-view{
+    min-height: 20em !important;
+}
+.body{
+    font-size: 1em;
+}
+
+

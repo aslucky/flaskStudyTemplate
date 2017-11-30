@@ -53,10 +53,10 @@ def dashboard():
 
 
 @admin.route('/userManage')
-# @login_required
+@login_required
 def userManage():
     try:
-        return render_template("userManage.html")
+        return render_template("adminUserManage.html")
     except TemplateNotFound:
         abort(404)
 
@@ -65,7 +65,7 @@ def userManage():
 # @login_required
 def deviceManage():
     try:
-        return render_template("deviceManage.html")
+        return render_template("adminDeviceManage.html")
     except TemplateNotFound:
         abort(404)
 

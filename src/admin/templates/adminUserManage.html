@@ -1,0 +1,157 @@
+{% extends "adminBase.html" %}
+{% block title %}用户管理页面{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/adminDashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/adminUserManage.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ext/easyui/themes/bootstrap/easyui.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ext/easyui/themes/icon.css') }}">
+{% endblock %}
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-dark top-bar">
+    <div class="brand mr-5">
+        <img src="{{ url_for('admin.static', filename='images/avatar.png') }}"
+             class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="#">
+            控制台
+        </a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsMenu"
+            aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsMenu">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard">主页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item  active">
+                <a class="nav-link" href="userManage">用户管理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="deviceManage">设备管理</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-md-0 mr-2">
+            <input class="form-control" type="text" placeholder="Search">
+        </form>
+        <ul class="navbar-nav navbar-right drmenu">
+            <img src="{{ url_for('admin.static', filename='images/man.png') }}"
+                 class="" alt="">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">菜单</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> 个人资料</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> 系统设置</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="logout"><i class="fa fa-power-off"></i> 退出登录</a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<aside id="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="active">用户管理</li>
+        </ol>
+    </div>
+</aside>
+
+<main id="main" role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-lg-3">
+                <div class="list-group">
+                    <div class="card-header main-color-bg">
+                        <span class="fa fa-cog" aria-hidden="true"></span> 信息预览
+                    </div>
+                    <a href="userManage" class="list-group-item list-group-item-action">
+                        <span class="fa fa-user" aria-hidden="true"></span> 注册用户
+                        <span class="badge badge-pill badge-secondary ">122</span> </a>
+                    <a href="deviceManage" class="list-group-item list-group-item-action">
+                        <span class="fa fa-list" aria-hidden="true"></span> 注册设备
+                        <span class="badge badge-pill badge-secondary">123</span> </a>
+                    <a href="deviceManage" class="list-group-item list-group-item-action">
+                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span> 活跃设备
+                        <span class="badge badge-pill badge-secondary">112</span> </a>
+
+                </div>
+            </div>
+            <div class="col-md-9 col-lg-9 ">
+                <div class="card">
+                    <div class="card-header  main-color-bg">已注册用户</div>
+                    <div class="card-body p-0 border">
+                        <table id="dg" title="" class="easyui-datagrid" style=""
+                               url="/admin/api/v1.0/users" method="get"
+                               toolbar="#toolbar" pagination="true"
+                               rownumbers="true" fitColumns="true" singleSelect="true">
+                            <thead>
+                            <tr>
+                                <th field="name" width="30">姓名</th>
+                                <th field="password" width="50">密码</th>
+                                <th field="email" width="60">邮箱</th>
+                                <th field="cellPhone" width="50">移动电话</th>
+                                <th field="registerDate" width="50">注册时间</th>
+                                <th field="lastLoginDate" width="50">最后登录时间</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div id="toolbar">
+                            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true"
+                               onclick="newUser()">新建用户</a>
+                            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
+                               onclick="editUser()">修改用户</a>
+                            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
+                               onclick="destroyUser()">删除用户</a>
+                        </div>
+                        <div id="dlg" class="easyui-dialog" style="width:400px"
+                             closed="true" buttons="#dlg-buttons">
+                            <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
+                                <div style="margin-bottom:20px;font-size:14px;border-bottom:1px solid #ccc">用户信息
+                                </div>
+                                <div style="margin-bottom:10px">
+                                    <input name="name" class="easyui-textbox" required="true" label="用户名:"
+                                           style="width:100%">
+                                </div>
+                                <div style="margin-bottom:10px">
+                                    <input name="password" class="easyui-textbox easyui-validatebox" required="true" label="密码:"
+                                           data-options="validType:'minLength[6]'" style="width:100%">
+                                </div>
+                                <div style="margin-bottom:10px">
+                                    <input name="cellPhone" class="easyui-textbox" required="true" label="移动电话:"
+                                           style="width:100%">
+                                </div>
+                                <div style="margin-bottom:10px">
+                                    <input name="email" class="easyui-textbox" required="true" validType="email"
+                                           label="电子邮箱:" style="width:100%">
+                                </div>
+                                <input name="id" style="display: none">
+                            </form>
+                        </div>
+                        <div id="dlg-buttons">
+                            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok"
+                               onclick="saveUser()" style="width:90px">提交</a>
+                            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+                               onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
+{% block script %}
+{{super()}}
+<script src="{{url_for('static', filename='js/ext/jquery.easyui.min.js')}}"></script>
+<script src="{{url_for('admin.static', filename='js/adminUserManage.js')}}"></script>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+
+body{
+    font-size: 1.6em;
+}
+/* 自定义navbar 背景色 */
+.top-bar {
+    background-color: #3C3F41;  !important;
+    border-color: #3A3D3E;  !important;
+    box-shadow: 3px 3px 5px #636363;
+    color: #ffffff;
+    /*border-radius: 8px;*/
+}
+
+/* nav bar profile img */
+.top-bar .brand  img {
+    height: 30px;
+    width: 30px;
+    margin: .1em 0 0 0;
+    /*padding: 11px 0px;*/
+}
+
+.top-bar .brand .navbar-brand{
+    font-size: 1.2em;
+}
+
+.navbar-collapse .form-inline .form-control{
+    font-size: .8em;
+}
+
+.drmenu img{
+    height: 30px;
+    width: 30px;
+    border-radius:50px;
+    margin: 4px 0 0 0;
+}
+
+.top-bar a{
+    color: #ffffff;
+}
+
+.dropdown-menu a{
+    color: #000;
+}
+.top-bar .user-profile img {
+    border-radius: 100px;
+}
+
+/* end - nav bar profile img */
+
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    left: -80px;
+    zIndex: 1000;
+    width: 9em;
+    font-size: 1em;
+}
+
+/* main part*/
+
+/* Breadcrumb */
+.breadcrumb {
+    background: #cccccc;
+    color: #333333;
+    margin: .6em 0 .6em 0;
+    padding: .5em;
+}
+
+.breadcrumb a {
+    color: #333333;
+}
+
+.container a .badge {
+    position: absolute;
+    right: 12px;
+}
+
+.card{
+    margin-bottom: 10px;
+}
+
+.main-color-bg {
+    background-color: #e74c3c !important;
+    border-color: #c0392b !important;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 321px) {
+    .footer{
+        font-size: 1em;
+    }
+}
